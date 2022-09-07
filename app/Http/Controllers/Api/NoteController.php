@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\NoteCollection;
 use App\Http\Resources\NoteResource;
 use App\Models\Note;
 
@@ -20,7 +21,7 @@ class NoteController extends Controller
     public function index()
     {
         $notes = Note::all();
-        return NoteResource::collection($notes);
+        return new NoteCollection(Note::paginate(5));
     }
 
     /**
@@ -55,7 +56,11 @@ class NoteController extends Controller
      */
     public function show($id)
     {
-        return new NoteResource(Note::find($id));
+        $note = Note::find($id);
+        if(!$note){
+            return  response('Note is not found', 404)->header('Content-type', 'application/json');
+        }
+        return new NoteResource($note);
     }
 
 
@@ -68,7 +73,27 @@ class NoteController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $note = Note::find($id);
+        if(!$note){
+            return  response('Note is not found', 404)->header('Content-type', 'application/json');
+        }
+
+        $input = $request->all();
+        $validator = Validator::make($input, [
+            'fio' => ['required', 'string'],
+            'company' => 'string',
+            'number' => ['required', 'string'],
+            'email' => ['required', 'email'],
+            'birthday' => 'date',
+            'picture' => 'image',
+        ]);
+        if($validator->fails()){
+            return json_encode($validator->errors());
+        }
+
+        $note->fill($request->except(['id']));
+        $note->save();
+        return new NoteResource($note);
     }
 
     /**
@@ -79,6 +104,11 @@ class NoteController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $note = Note::find($id);
+        if(!$note){
+            return  response('Note is not found', 404)->header('Content-type', 'application/json');
+        }
+        $note->delete();
+        return json_encode('Note deleted successfully.');
     }
 }
