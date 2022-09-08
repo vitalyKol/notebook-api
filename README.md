@@ -8,11 +8,11 @@
 ## Требования к заданию
 Структура методов:
 
-1.1. GET /api/v1/notes/
-1.2. POST /api/v1/notes/
-1.3. GET /api/v1/notes/<id>/
-1.4. PUT /api/v1/notes/<id>/
-1.5. DELETE /api/v1/notes/<id>/
+1. GET /api/v1/notes/
+2. POST /api/v1/notes/
+3. GET /api/v1/notes/<id>/
+4. PUT /api/v1/notes/<id>/
+5. DELETE /api/v1/notes/<id>/
 
 Добавлены поля для POST записной книжки:
 
