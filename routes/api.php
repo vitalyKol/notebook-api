@@ -17,6 +17,8 @@ use Illuminate\Http\Response;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+//Route::redirect('/documentation', asset('/dist'));
+
 Route::prefix('v1')->group(function(){
     Route::apiResource('/notes', \App\Http\Controllers\Api\NoteController::class);
 });

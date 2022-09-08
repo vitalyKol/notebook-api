@@ -1,0 +1,231 @@
+{
+	"info": {
+		"_postman_id": "09dca2f7-2e52-42b6-ab9c-0b002028a7de",
+		"name": "test-api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23182442"
+	},
+	"item": [
+		{
+			"name": "Get all notes",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://notebook/public/api/v1/notes",
+					"protocol": "http",
+					"host": [
+						"notebook"
+					],
+					"path": [
+						"public",
+						"api",
+						"v1",
+						"notes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get a note",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://notebook/public/api/v1/notes/4",
+					"protocol": "http",
+					"host": [
+						"notebook"
+					],
+					"path": [
+						"public",
+						"api",
+						"v1",
+						"notes",
+						"4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Note not found",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://notebook/public/api/v1/notes/477757",
+					"protocol": "http",
+					"host": [
+						"notebook"
+					],
+					"path": [
+						"public",
+						"api",
+						"v1",
+						"notes",
+						"477757"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "new notes",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://notebook/public/api/v1/notes?fio=Klava Dave&number=846513203&email=klava@doodle.com",
+					"protocol": "http",
+					"host": [
+						"notebook"
+					],
+					"path": [
+						"public",
+						"api",
+						"v1",
+						"notes"
+					],
+					"query": [
+						{
+							"key": "fio",
+							"value": "Klava Dave"
+						},
+						{
+							"key": "number",
+							"value": "846513203"
+						},
+						{
+							"key": "email",
+							"value": "klava@doodle.com"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "fail new note",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://notebook/public/api/v1/notes",
+					"protocol": "http",
+					"host": [
+						"notebook"
+					],
+					"path": [
+						"public",
+						"api",
+						"v1",
+						"notes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete post",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://notebook/public/api/v1/notes/22",
+					"protocol": "http",
+					"host": [
+						"notebook"
+					],
+					"path": [
+						"public",
+						"api",
+						"v1",
+						"notes",
+						"22"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update note",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "http://notebook/public/api/v1/notes/4?fio=Marko Polo",
+					"protocol": "http",
+					"host": [
+						"notebook"
+					],
+					"path": [
+						"public",
+						"api",
+						"v1",
+						"notes",
+						"4"
+					],
+					"query": [
+						{
+							"key": "fio",
+							"value": "Marko Polo"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Fail update a note",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "http://notebook/public/api/v1/notes/5?email=dsfdsfsdf",
+					"protocol": "http",
+					"host": [
+						"notebook"
+					],
+					"path": [
+						"public",
+						"api",
+						"v1",
+						"notes",
+						"5"
+					],
+					"query": [
+						{
+							"key": "email",
+							"value": "dsfdsfsdf"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Fail delete a note",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://notebook/public/api/v1/notes/654321",
+					"protocol": "http",
+					"host": [
+						"notebook"
+					],
+					"path": [
+						"public",
+						"api",
+						"v1",
+						"notes",
+						"654321"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -42,7 +42,8 @@ class NoteController extends Controller
             'picture' => 'image',
         ]);
         if($validator->fails()){
-            return json_encode($validator->errors());
+            $err = json_encode($validator->errors());
+            return response($err, 405)->header('Content-type', 'application/json');
         }
         $note = Note::create($input);
         return new NoteResource($note);
@@ -80,15 +81,16 @@ class NoteController extends Controller
 
         $input = $request->all();
         $validator = Validator::make($input, [
-            'fio' => ['required', 'string'],
+            'fio' => 'string',
             'company' => 'string',
-            'number' => ['required', 'string'],
-            'email' => ['required', 'email'],
+            'number' => 'string',
+            'email' => 'email',
             'birthday' => 'date',
             'picture' => 'image',
         ]);
         if($validator->fails()){
-            return json_encode($validator->errors());
+            $err = json_encode($validator->errors());
+            return response($err, 405)->header('Content-type', 'application/json');
         }
 
         $note->fill($request->except(['id']));
